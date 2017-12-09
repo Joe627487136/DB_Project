@@ -34,7 +34,7 @@ DB_Project tree -L 1
 ```
 
 ## Before you run the project, please create related database ##
-- Our database is simply the mysql. Before you start the server it is required for you to have a schema and better with a related dataset. To do this: run all scripts under ```sql_script``` folder in your mysql server.
+- a. Our database is simply the mysql. Before you start the server it is required for you to have a schema and better with a related dataset. To do this: run all scripts under ```sql_script``` folder in your mysql server.
 - All five mysql scripts under ```sql_script``` folder:
 ```
     Django_Bookstore_Arrival_history.sql
@@ -42,6 +42,10 @@ DB_Project tree -L 1
     Django_Bookstore_Order.sql
     Django_Bookstore_User.sql
     Django_Bookstore_book.sql
+```
+- b. You may need to install ```mysqlclient``` package to use ```MySQLDB``` module to fetch data from db. If not installed, please:
+```
+    pip3 install mysqlclient
 ```
 
 ## How to run the code ##
@@ -66,7 +70,7 @@ class DB_Connection(models.Model):
 - c. Go to below url and start browsing!
 
 ```
-    127.0.0.1/8000
+    http://127.0.0.1/8000/
 ```
 ## Related ERD ##
 <p align="center">
