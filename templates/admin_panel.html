@@ -1,0 +1,182 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Management-Bookstore</title>
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css'%}">
+<link rel="apple-touch-icon-precomposed" href="{% static 'images/icon/icon.png'%}">
+<link rel="shortcut icon" href="{% static 'images/icon/favicon.ico'%}">
+<script src="{% static 'js/jquery-2.1.4.min.js'%}">
+</script>
+</head>
+<style>
+div.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+  .span3 {  
+    height: 80vh !important;
+    overflow-y: scroll;
+    overflow-x: scroll;
+  }
+  .tab {
+margin-left: 2.5em
+}
+</style>
+
+<body class="user-select">
+<section class="container-fluid">
+  <header>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header"> 
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">切换导航</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+          <a class="navbar-brand" href="/">Book Empire</a> </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <!--
+            <li><a href="">消息 <span class="badge">1</span></a></li>
+            -->
+            <li><a href="../" onClick="if(!confirm('Are you sure？'))return false;">Log out</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div class="row">
+    <aside class="col-sm-2 col-md-2 col-lg-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li><a href="../user_info">User info</a></li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li><a>Customer</a></li>
+        <li><a href="../order">Order</a></li>
+        <li><a href="../my_order_history">My Order History</a></li>
+        <li><a href="../my_comment_history">My Comment History</a></li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li><a>Admin</a></li>
+        <li><a class="dropdown-toggle" id="settingMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage Books</a>
+          <ul class="dropdown-menu" aria-labelledby="settingMenu">
+            <li><a href="../create_book">Create New Book Entry</a></li>
+            <li><a href="../add_book">Add Book Copies</a></li>
+          </ul>
+        </li>
+          <li><a href="../view_all_orders">Check All Orders</a></li>
+          <li class="active"><a href="../overview">Overview Panel</a></li>
+      </ul>
+    </aside>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-lg-10 col-md-offset-2 main" id="main">
+        <h1 class="page-header">General Information</h1>
+        <div class="table-responsive">
+          <table class="table table-striped table-hover">
+            <tbody>
+              <tr>
+                <td>You've logged in as admin.</td>
+              </tr>
+  
+            </tbody>
+          </table>
+        </div>
+      <div class="row placeholders">
+        <div class="col-xs-6 col-sm-3 placeholder">
+          <h4>Total Book No.</h4>
+          <span class="text-muted">{{ headers_list.0 }}</span> </div>
+        <div class="col-xs-6 col-sm-3 placeholder">
+          <h4>No. of Books Sold</h4>
+          <span class="text-muted">{{ headers_list.1 }}</span> </div>
+        <div class="col-xs-6 col-sm-3 placeholder">
+          <h4>Total User No.</h4>
+          <span class="text-muted">{{ headers_list.2 }}</span> </div>
+        <div class="col-xs-6 col-sm-3 placeholder">
+          <h4>Total Comment No.</h4>
+          <span class="text-muted">{{ headers_list.3 }}</span> </div>
+      </div>
+      <h1 class="page-header">Monthly Feedback</h1>
+      <div class="table-responsive">
+        <table class="table table-striped table-hover" border="1">
+          <thead>
+            <tr> </tr>
+          </thead>
+          <tbody>
+           <tr>
+             <td class="col-md-4"><h4>Highest Rated Books:</h4></td>
+             <td class="col-md-4"><h4>Most Popular Authors:</h4></td>
+             <td class="col-md-4"><h4>Most Popular Publishers:</h4></td>
+
+            </tr>
+            <tr>
+              <td><span class="label label-warning">1</span><span> </span>{{ book_list.0 }}</td>
+              <td><span class="label label-warning">1</span><span> </span>{{ author_list.0 }}</td>
+              <td><span class="label label-warning">1</span><span> </span>{{ pub_list.0 }}</td>
+
+            </tr>
+            <tr>
+              <td><span class="label label-success">2</span><span> </span>{{ book_list.1 }}</td>
+              <td><span class="label label-success">2</span><span> </span>{{ author_list.1 }}</td>
+              <td><span class="label label-success">2</span><span> </span>{{ pub_list.1 }}</td>
+
+            </tr>
+            <tr>
+              <td><span class="label label-info">3</span><span> </span>{{ book_list.2 }}</td>
+              <td><span class="label label-info">3</span><span> </span>{{ author_list.2 }}</td>
+              <td><span class="label label-info">3</span><span> </span>{{ pub_list.2 }}</td>
+
+            </tr>
+            <tr>
+              <td><span class="label label-default">4</span><span> </span>{{ book_list.3 }}</td>
+              <td><span class="label label-default">4</span><span> </span>{{ author_list.3 }}</td>
+              <td><span class="label label-default">4</span><span> </span>{{ pub_list.3 }}</td>
+
+            </tr>
+            <tr>
+              <td><span class="label label-default">5</span><span> </span>{{ book_list.4 }}</td>
+              <td><span class="label label-default">5</span><span> </span>{{ author_list.4 }}</td>
+              <td><span class="label label-default">5</span><span> </span>{{ pub_list.4 }}</td>
+
+            </tr>
+
+          </tbody>
+          <tfoot>
+            <tr></tr>
+          </tfoot>
+        </table>
+      </div>
+  </div>
+</section>
+
+<script src="{% static 'js/bootstrap.min.js'%}"></script>
+<script src="{% static 'js/admin-scripts.js'%}"></script>
+
+<script type="text/javascript">
+ $(function(){
+   {% if alert %}
+      alert('{{alert}}');
+   {% endif %}
+ });
+</script>
+<script>
+    function Ajax_User_Info(){
+        var request_type = 'request_for_user_info';
+        var url = window.location.href;
+        $.ajax({
+            url:url,
+            type:'POST',
+            data:{'request_type':request_type},
+            success: function (arg) {
+            }
+
+        });
+    }
+</script>
+
+</body>
+</html>

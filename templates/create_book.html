@@ -1,0 +1,174 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Management-Bookstore</title>
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css'%}">
+<link rel="apple-touch-icon-precomposed" href="{% static 'images/icon/icon.png'%}">
+<link rel="shortcut icon" href="{% static 'images/icon/favicon.ico'%}">
+<script src="{% static 'js/jquery-2.1.4.min.js'%}">
+</script>
+</head>
+<style>
+div.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+  .span3 {  
+    height: 80vh !important;
+    overflow-y: scroll;
+    overflow-x: scroll;
+  }
+  .tab {
+margin-left: 2.5em
+}
+</style>
+
+<body class="user-select">
+<section class="container-fluid">
+  <header>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">切换导航</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+          <a class="navbar-brand" href="/">Book Empire</a> </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <!--
+            <li><a href="">消息 <span class="badge">1</span></a></li>
+            -->
+            <li><a href="../" onClick="if(!confirm('Are you sure？'))return false;">Log out</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div class="row">
+    <aside class="col-sm-2 col-md-2 col-lg-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li><a href="../user_info">User info</a></li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li><a>Customer</a></li>
+        <li><a href="../order">Order</a></li>
+        <li><a href="../my_order_history">My Order History</a></li>
+        <li><a href="../my_comment_history">My Comment History</a></li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li><a>Admin</a></li>
+        <li class="active"><a class="dropdown-toggle" id="settingMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage Books</a>
+          <ul class="dropdown-menu" aria-labelledby="settingMenu">
+            <li><a href="../create_book">Create New Book Entry</a></li>
+            <li><a href="../add_book">Add Book Copies</a></li>
+          </ul>
+        </li>
+          <li><a href="../view_all_orders">Check All Orders</a></li>
+          <li><a href="../overview">Overview Panel</a></li>
+      </ul>
+    </aside>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-lg-10 col-md-offset-2 main" id="main">
+      <div class="row">
+          <form action="" method="post" autocomplete="off" class="form-signin" id="login_form">
+          <h1 class="page-header">Add New Book Entry</h1>
+          <div class="col-md-5">
+            <div class="form-group">
+              <label for="category-name">Title</label>
+              <input type="text" id="booktitle" name="book_title" class="form-control" placeholder="Input book title" required autocomplete="off">
+            </div>
+            <div class="form-group">
+              <label for="category-alias">Author</label>
+              <input type="text" id="bookauthor" name="book_author" class="form-control" placeholder="Input book author" required autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label for="category-alias">Publisher</label>
+                <input type="text" id="bookpublisher" name="book_publisher" class="form-control" placeholder="Input book publisher" required autocomplete="off">
+            </div>
+            <div class="form-group">
+              <label for="category-alias">ISBN-13</label>
+              <input type="text" id="bookid" name="book_ID" class="form-control" placeholder="Input book ISBN-13" required autocomplete="off">
+            </div>
+            <div class="form-group">
+              <label for="category-alias">Publish year</label>
+              <input type="text" id="bookyear" name="book_year" class="form-control" placeholder="Input publish year" required autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label for="category-alias">Languages</label>
+                <input type="text" id="book_lan" name="book_lan" class="form-control" placeholder="Input book language" required autocomplete="off">
+            </div>
+            <button class="btn btn-primary" type="submit" name="Submit_Create_Book" value="Submit_Create_Book">Create Book</button>
+        </div>
+        <div class="col-md-5">
+            <div class="form-group">
+                <label for="category-fname" auto>Select Book Type</label>
+                <select id="bookcat" class="form-control" name="book_cat" autocomplete="off" required>
+                  <option value="" selected>None</option>
+                  <option value="Sci-Tech">Sci-Tech</option>
+                  <option value="Scientific Articles">Scientific Articles</option>
+                  <option value="Fiction">Fiction</option>
+                  <option value="Comics">Comics</option>
+                  <option value="Standards">Standards</option>
+                  <option value="Magazines">Magazines</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="category-fname">Select Book Format</label>
+                <select id="book_format" class="form-control" name="book_format" autocomplete="off" required>
+                  <option value="" selected>None</option>
+                  <option value="paperback">paperback</option>
+                  <option value="hardcover">hardcover</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="category-alias">Pages</label>
+                <input type="text" id="book_pages" name="book_pages" class="form-control" placeholder="Input book pages" required autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label for="category-alias">ISBN-10</label>
+                <input type="text" id="book_isbn10" name="book_isbn10" class="form-control" placeholder="Input ISBN-10" required autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label for="category-alias">Copies</label>
+                <input type="text" id="book_copies" name="book_copies" class="form-control" placeholder="Input current copies" required autocomplete="off">
+            </div>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="{% static 'js/bootstrap.min.js'%}"></script>
+<script src="{% static 'js/admin-scripts.js'%}"></script>
+
+<script type="text/javascript">
+ $(function(){
+   {% if alert %}
+      alert('{{alert}}');
+   {% endif %}
+ });
+</script>
+<script>
+    function Ajax_User_Info(){
+        var request_type = 'request_for_user_info';
+        var url = window.location.href;
+        $.ajax({
+            url:url,
+            type:'POST',
+            data:{'request_type':request_type},
+            success: function (arg) {
+            }
+
+        });
+    }
+</script>
+
+</body>
+</html>

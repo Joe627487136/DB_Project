@@ -1,0 +1,41 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bookstore</title>
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/login.css'%}">
+<link rel="apple-touch-icon-precomposed" href="{% static 'images/icon/icon.png'%}">
+<link rel="shortcut icon" href="{% static 'images/icon/favicon.ico'%}">
+<script src="{% static 'js/jquery-2.1.4.min.js'%}">
+</script>
+</head>
+
+<body class="user-select">
+<div class="container">
+  <div class="siteIcon"><img src="{% static 'images/icon/icon.png'%}" alt="" data-toggle="tooltip" data-placement="top" title="Welcome to the Bookstore!" draggable="false" /></div>
+  <form action="" method="post" autocomplete="off" class="form-signin" id="login_form">
+    <h2 class="form-signin-heading">Please Register here!</h2>
+    <label for="userName" class="sr-only">Username</label>
+    <input type="text" id="userName" name="username" class="form-control" placeholder="Pleast input your username" required autofocus autocomplete="off" maxlength="10">
+    <label for="userPwd" class="sr-only">Password</label>
+    <input type="password" id="userPwd" name="userpwd" class="form-control" placeholder="Pleast input your password" required autocomplete="off" maxlength="18">
+    <button class="btn btn-lg btn-primary btn-block" type="submit" id="signinSubmit">Submit</button>
+      <a href="http://127.0.0.1:8000/login/" id="register">Back to login</a>
+  </form>
+</div>
+<script src="{% static 'js/bootstrap.min.js'%}"></script>
+<script type="text/javascript">
+ $(function(){
+   {% if alert %}
+      alert('{{alert}}');
+   {% endif %}
+ });
+</script>
+</body>
+</html>
