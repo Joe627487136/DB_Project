@@ -69,8 +69,6 @@ class DB_Connection(models.Model):
     127.0.0.1/8000
 ```
 ## Related ERD ##
-<object data="https://github.com/Joe627487136/DB_Project/blob/master/pics/ERD.pdf" type="application/pdf" width="700px" height="700px">
-    <embed src="https://github.com/Joe627487136/DB_Project/blob/master/pics/ERD.pdf">
-        This browser does not support PDFs. Please download the PDF to view it: <a href="http://yoursite.com/the.pdf">Download PDF</a>.</p>
-    </embed>
-</object>
+<p align="center">
+<img src="https://github.com/Joe627487136/DB_Project/blob/master/pics/ERD.png" width="480" align="center">
+</p>
