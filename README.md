@@ -6,8 +6,8 @@
 ```
 ## Code structure ##
 ```
-DB_Project tree -L 1
-.
+DB_Project
+
 ├── DB_Project
     ├── __init__.py
     ├── __pycache__
