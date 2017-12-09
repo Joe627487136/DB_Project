@@ -70,5 +70,5 @@ class DB_Connection(models.Model):
 ```
 ## Related ERD ##
 <p align="center">
-<img src="https://github.com/Joe627487136/DB_Project/blob/master/pics/ERD.png" width="480" align="center">
+<img src="https://github.com/Joe627487136/DB_Project/blob/master/pics/ERD.png" width="800" align="center">
 </p>
