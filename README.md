@@ -76,3 +76,12 @@ class DB_Connection(models.Model):
 <p align="center">
 <img src="https://github.com/Joe627487136/DB_Project/blob/master/pics/ERD.png" width="800" align="center">
 </p>
+
+## Group Members ##
+- Zhou Xuexuan 1001603
+- Zuo Yunfei 1001441
+- Shang Xiaosheng 1001426
+- Yang Fan 1001734
+- Fan Xue 1001434
+- Weng Yunfan 1001427
+
